@@ -59,6 +59,10 @@ urlPrefix: http://www.w3.org/TR/css-masking-1/
 	url: #propdef-clip-path; type:dfn; text: clip-path
 urlPrefix: https://drafts.csswg.org/cssom-view-1/
 	url: #pinch-zoom; type:dfn; text: pinch zoom
+urlPrefix: https://drafts.csswg.org/css-overflow-3/
+	url: #propdef-overflow; type:dfn; text: overflow
+	url: #propdef-overflow-x; type:dfn; text: overflow-x
+	url: #propdef-overflow-y; type:dfn; text: overflow-y
 </pre>
 
 <pre class="link-defaults">
@@ -304,6 +308,8 @@ or else the <a>top-level browsing context</a>'s <a>document</a> node
 (referred to as the <dfn for="IntersectionObserver">implicit root</dfn>) if
 the {{IntersectionObserver/root}} attribute is <code>null</code>.
 
+An {{Element}} is defined as having an <dfn for="IntersectionObserver">overflow clip</dfn> if its computed style has a value other than "visible" for its <a>overflow</a>, <a>overflow-x</a>, or <a>overflow-y</a> property.
+
 The <dfn for=IntersectionObserver>root intersection rectangle</dfn>
 for an {{IntersectionObserver}}
 is the rectangle we'll use to check against the targets.
@@ -312,7 +318,7 @@ is the rectangle we'll use to check against the targets.
 	<dt>If the <a>intersection root</a> is the <a>implicit root</a>,
 	<dd>it's the viewport's size.
 
-	<dt>If the <a>intersection root</a> has an overflow clip,
+	<dt>If the <a>intersection root</a> has an <a>overflow clip</a>,
 	<dd>it's the element's <a>content area</a>.
 
 	<dt>Otherwise,
@@ -581,7 +587,7 @@ run these steps:
 2. Let |container| be the <a>containing block</a> of the <a>target</a>.
 3. While |container| is not the <a>intersection root</a>:
 	1. Map |intersectionRect| to the coordinate space of |container|.
-	2. If |container| has overflow clipping or a css <a>clip-path</a> property,
+	2. If |container| has an <a>overflow clip</a> or a CSS <A>clip-path</a> property,
 		update |intersectionRect| by applying |container|'s clip.
 	3. If |container| is the root element of a <a>nested browsing context</a>,
 		update |container| to be the <a>browsing context container</a> of |container|,
